@@ -32,13 +32,13 @@
                             <a class="nav-link" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="quemsomos.html">Quem Somos</a>
+                            <a class="nav-link" href="quemsomos.html">Quem Somos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="sobre.html">Sobre Phishing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Suporte</a>
+                            <a class="nav-link active" href="suporte.html">Suporte</a>
                         </li>
                     </ul>
                 </div>
@@ -48,40 +48,35 @@
     <main>
         <div class="container">
             <div class="row">
-                <h1 style="margin-top: 3vw;">Quem Somos</h1>
+                <h1 style="margin-top: 3vw;">Suporte</h1>
             </div>
         </div>
-        <div class="container">
-            <div class="row" >
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
+        <div class="container" style="max-width: 50vw; margin-top: 2vh;">
+            <div class="row g-3">
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Nome" aria-label="Primeiro nome">
                 </div>
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
-                </div>
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
+                <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Sobrenome" aria-label="Last name">
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row" >
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
+            <div class="row" style="margin-top: 2vh;">
+                <div class="col-12">
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="email@exemplo.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">
+                            <h5>Sua dúvida</h5>
+                        </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                            placeholder="Como adiciono novos sites à plataforma?" rows="3"></textarea>
+                    </div>
                 </div>
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
-                </div>
+            </div>
+            <div class="d-grid gap-2 col-2 mx-auto">
+                <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 1rem;">Enviar</button>
             </div>
         </div>
     </main>
