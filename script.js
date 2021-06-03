@@ -83,8 +83,8 @@ function verificar() {
                 window.location.href = "./encontrada.html?link=" + link;
                 alert('O site foi encontrado.')
             } else {
-                alert('O site não foi encontrado.')
                 window.location.href = "./registrar.html";
+                alert('O site não foi encontrado.')
             }
 
             // console.log(sites);
