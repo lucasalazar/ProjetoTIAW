@@ -153,10 +153,12 @@ function confiavel() {
                 }
 
                 sitesMap1.push({
-                    site: link,
+                    site: site,
                     avaliacao: avaliacao
                 })
             }
+            console.log(JSON.stringify(sitesMap))
+            console.log(JSON.stringify(sitesMap1))
             localStorage.setItem('sites', JSON.stringify(sitesMap1))
 
             window.location.href = "./encontrada.html?link=" + link;
@@ -219,7 +221,7 @@ function inconfiavel() {
                 }
 
                 sitesMap1.push({
-                    site: link,
+                    site: site,
                     avaliacao: avaliacao
                 })
             }
