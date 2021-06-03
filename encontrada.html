@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Verificador de links - Quem somos</title>
+    <title>Verificador de links - Página encontrada</title>
 </head>
 
 <body>
@@ -29,10 +29,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="quemsomos.html">Quem Somos</a>
+                            <a class="nav-link" href="quemsomos.html">Quem Somos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="sobre.html">Sobre Phishing</a>
@@ -48,39 +48,18 @@
     <main>
         <div class="container">
             <div class="row">
-                <h1 style="margin-top: 3vw;">Quem somos</h1>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row" >
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
-                </div>
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
-                </div>
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
+                <div class="col-12" style="margin-top: 3vw;">
+                    <h1>Página encontrada</h1>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row" >
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
-                </div>
-                <div class="col-4" style="margin-top: 2vw; text-align: center;">
-                    <img style="height: auto; width: 8vw; margin: auto;" src="imagens/profile.png" alt="profile">
-                    <h4>Nome da pessoa</h4>
-                    <p>Descrição da pessoa</p>
+            <div class="row">
+                <div class="col-12">
+                    <p>O site de link: <b id="link-a">LINK</b> foi encontrado no nossa banco de dados e sua avaliação é
+                        de
+                        <b id="avaliacao">AVALIACAO</b>. Com a pontuação de: <b id="count-avaliacao">Count</b></p>
+                    <p>Vote você também nesse site:</p>
+                    <button type="button" class="btn btn-success btn-sm" onclick="confiavel()">Confiável</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="inconfiavel()">Não confiável</button>
                 </div>
             </div>
         </div>
@@ -96,6 +75,62 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+    </script>
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search)
+        if (params.has('link')) {
+            let link = params.get('link')
+
+            let sites = localStorage.getItem('sites')
+            if (sites) {
+
+                sitesMap = []
+                let a = JSON.parse(sites)
+                for (const i of a) {
+                    sitesMap.push({
+                        site: i.site,
+                        avaliacao: i.avaliacao
+                    })
+                }
+
+                let sites_arr = []
+                let avaliacao_arr = []
+
+                for (const i of sitesMap) {
+                    const {site, avaliacao} = i
+
+                    sites_arr.push(site)
+                    avaliacao_arr.push(avaliacao)
+                }
+
+                if (sites_arr.indexOf(link) != -1) {
+                   let avaliacao = parseInt(avaliacao_arr[sites_arr.indexOf(link)])
+
+                   if (avaliacao >= 0) {
+                       avaliacao = 'CONFIÁVEL'
+                   } else {
+                        avaliacao = 'NÃO CONFIÁVEL'
+                   }
+                   let site_k = document.getElementById('link-a')
+                   let avaliacao_k = document.getElementById('avaliacao')
+                   let count_k = document.getElementById('count-avaliacao')
+                   site_k.innerHTML = link
+                   avaliacao_k.innerHTML = avaliacao
+                   count_k.innerHTML = parseInt(avaliacao_arr[sites_arr.indexOf(link)])
+                } else {
+                    alert('O site não foi encontrado.')
+                    window.location.href = "./registrar.html";
+                }
+                
+                // console.log(sites);
+                // sitesMap = []
+                // let a = JSON.parse(sites)
+                // for (const i of a) {
+                //     sitesMap.push({site: i.site})
+            }
+
+        }
     </script>
 </body>
 
