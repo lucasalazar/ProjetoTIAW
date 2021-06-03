@@ -80,11 +80,13 @@ function verificar() {
             }
 
             if (sites_arr.indexOf(link) != -1) {
-                window.location.href = "./encontrada.html?link=" + link;
                 alert('O site foi encontrado.')
+                window.location.href = "./encontrada.html?link=" + link;
+
             } else {
-                window.location.href = "./registrar.html";
                 alert('O site não foi encontrado.')
+                window.location.href = "./registrar.html";
+
             }
 
             // console.log(sites);

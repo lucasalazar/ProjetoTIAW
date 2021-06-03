@@ -19,7 +19,8 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a href="index.html"><img style="height: 6vh; width: auto;" class="navbar-brand" src="imagens/logo.png" alt="logo"></a>
+                <a href="index.html"><img style="height: 6vh; width: auto;" class="navbar-brand" src="imagens/logo.png"
+                        alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +40,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="suporte.html">Suporte</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Noticias.html">Noticias</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -49,15 +53,28 @@
             <div class="row">
                 <div class="col-12" style="margin-top: 3vw;">
                     <h1>Verificador de site</h1>
-                    <label for="inputLink1" class="form-label">Coloque aqui o link do site que deseja verificar.</label>
-                    <input type="text" id="inputLink1" class="form-control">
+                    <label for="inputLink1" class="form-label" >Coloque aqui o link do site que deseja verificar.</label>
+                    <form method="POST" class="formComentario">
+                        <input autocomplete="off" type="text" id="inputLink1" class="form-control">
+                    </form>
                     <div id="formHelper" class="form-text">
-                        Verificaremos em nosso banco de dados se temos alguma informação sobre esse site e te avisaremos.
+                        Verificaremos em nosso banco de dados se temos alguma informação sobre esse site e te
+                        avisaremos.
                     </div>
                     <div class="d-grid gap-2 col-2 mx-auto">
-                        <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 1rem;" onclick="verificar()">Verificar</button>
+                        <button id="enviar" type="button" class="btn btn-secondary btn-lg" style="margin-top: 1rem;"
+                            onclick="verificar()">Verificar</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-2" style="margin-top: 1rem; margin-left: 16vw;">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle show" data-bs-toggle="dropdown"
+                    aria-expanded="false" >
+                    Historico de pesquisas:
+                </button>
+                <ul class="dropdown-menu show" id="tela" data-popper-placement="bottom-start" style="width: auto;"></ul>
             </div>
         </div>
     </main>
@@ -74,6 +91,7 @@
         integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
     </script>
     <script src="script.js"></script>
+    <script src="pesquisas.js"></script>
 </body>
 
 </html>

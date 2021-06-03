@@ -13,6 +13,48 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Verificador de links - Quem somos</title>
+    <script>
+        window.onload = () => {
+            btn_submit.disabled = true;
+            let validaForm = () => {
+                if (nome.value.lenght == 0 || sobrenome.value.lenght == 0 || exampleFormControlTextarea1
+                    .value == 0 || exampleFormControlInput1.value == 0)
+                    btn_submit.disabled = true;
+                else
+                    btn_submit.disabled = false;
+            };
+            nome.oninput = validaForm;
+            sobrenome.oninput = validaForm;
+            exampleFormControlInput1.oninput = validaForm;
+            exampleFormControlTextarea1.oninput = validaForm;
+
+            duvida.onsubmit = (evento) => {
+                if (typeof (Storage) !== "undefined") {
+                    if (localStorage.cont) {
+                        localStorage.cont = Number(localStorage.cont) + 1;
+                    } else {
+                        localStorage.cont = 1;
+                    }
+
+                    let user = {
+                        nome: nome.value,
+                        sobrenome: sobrenome.value,
+                        duvida: exampleFormControlTextarea1.value,
+                        email: exampleFormControlInput1.value
+                    };
+                    localStorage.setItem('user' + localStorage.cont, JSON.stringify(user));
+                    nome.value = '';
+                    sobrenome.value = '';
+                    exampleFormControlTextarea1.value = '';
+                    exampleFormControlInput1.value = '';
+
+                    btn_submit.disabled = true;
+                    alert('Mensagem enviada com sucesso!');
+                    event.preventDefault();
+                };
+            };
+        };
+    </script>
 </head>
 
 <body>
@@ -40,6 +82,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="suporte.html">Suporte</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Noticias.html">Noticias</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -51,34 +96,40 @@
                 <h1 style="margin-top: 3vw;">Suporte</h1>
             </div>
         </div>
-        <div class="container" style="max-width: 50vw; margin-top: 2vh;">
-            <div class="row g-3">
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Primeiro nome">
-                </div>
-                <div class="col-6">
-                    <input type="text" class="form-control" placeholder="Sobrenome" aria-label="Last name">
-                </div>
-            </div>
-            <div class="row" style="margin-top: 2vh;">
-                <div class="col-12">
-                    <div class="mb-3">
-                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                            placeholder="email@exemplo.com">
+        <form id="duvida" method="post" action="https://postman-echo.com/post">
+            <div class="container" style="max-width: 50vw; margin-top: 2vh;">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Nome" id="nome" name="nnome"
+                            aria-label="Primeiro nome" autocomplete="off">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">
-                            <h5>Sua dúvida</h5>
-                        </label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                            placeholder="Como adiciono novos sites à plataforma?" rows="3"></textarea>
+                    <div class="col-6">
+                        <input type="text" class="form-control" placeholder="Sobrenome" id="sobrenome" name="nsobrenome"
+                            aria-label="Last name" autocomplete="off">
                     </div>
                 </div>
+                <div class="row" style="margin-top: 2vh;">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="exampleFormControlInput1" name="nemail"
+                                placeholder="email@exemplo.com" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">
+                                <h5>Sua dúvida</h5>
+                            </label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                name="nexampleFormControlTextarea1"
+                                placeholder="Como adiciono novos sites à plataforma?" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 col-2 mx-auto">
+                    <button type="submit" id="btn_submit" class="btn btn-secondary btn-lg"
+                        style="margin-top: 1rem;">Enviar</button>
+                </div>
             </div>
-            <div class="d-grid gap-2 col-2 mx-auto">
-                <button type="button" class="btn btn-secondary btn-lg" style="margin-top: 1rem;">Enviar</button>
-            </div>
-        </div>
+        </form>
     </main>
     <footer class="text-center text-white fixed-bottom">
         <div class="text-center p-3" style="background-color: #47525e;">
