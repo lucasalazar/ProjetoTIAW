@@ -1,6 +1,7 @@
 var saveLinkVerified = function () {
     let link = document.getElementById('link').value
     let status = document.getElementById('status').value
+    let descricao = document.getElementById('coment').value
 
     let sites = localStorage.getItem('sites')
     if (sites) {
@@ -10,7 +11,8 @@ var saveLinkVerified = function () {
         for (const i of a) {
             sitesMap.push({
                 site: i.site,
-                avaliacao: i.avaliacao
+                avaliacao: i.avaliacao,
+                comentario: i.comentario
             })
         }
 
@@ -31,7 +33,8 @@ var saveLinkVerified = function () {
 
             sitesMap.push({
                 site: link,
-                avaliacao: status
+                avaliacao: status,
+                comentario: descricao
             })
             localStorage.setItem('sites', JSON.stringify(sitesMap))
 
@@ -44,7 +47,8 @@ var saveLinkVerified = function () {
 
         sitesMap.push({
             site: link,
-            avaliacao: status
+            avaliacao: status,
+            comentario: descricao
         })
         localStorage.setItem('sites', JSON.stringify(sitesMap))
 
@@ -65,7 +69,8 @@ function verificar() {
             for (const i of a) {
                 sitesMap.push({
                     site: i.site,
-                    avaliacao: i.avaliacao
+                    avaliacao: i.avaliacao,
+                    comentario: i.descricao
                 })
             }
 
@@ -122,21 +127,25 @@ function confiavel() {
         for (const i of a) {
             sitesMap.push({
                 site: i.site,
-                avaliacao: i.avaliacao
+                avaliacao: i.avaliacao,
+                comentario: i.comentario
             })
         }
 
         let sites_arr = []
         let avaliacao_arr = []
+        let comentario_arr = []
 
         for (const i of sitesMap) {
             const {
                 site,
-                avaliacao
+                avaliacao,
+                comentario
             } = i
 
             sites_arr.push(site)
             avaliacao_arr.push(avaliacao)
+            comentario_arr.push(comentario)
         }
 
         if (sites_arr.indexOf(link) != -1) {
@@ -147,7 +156,8 @@ function confiavel() {
             for (const i of sitesMap) {
                 let {
                     site,
-                    avaliacao
+                    avaliacao,
+                    comentario
                 } = i
 
                 if (site == link) {
@@ -156,7 +166,8 @@ function confiavel() {
 
                 sitesMap1.push({
                     site: site,
-                    avaliacao: avaliacao
+                    avaliacao: avaliacao,
+                    comentario: comentario
                 })
             }
             console.log(JSON.stringify(sitesMap))
@@ -190,21 +201,25 @@ function inconfiavel() {
         for (const i of a) {
             sitesMap.push({
                 site: i.site,
-                avaliacao: i.avaliacao
+                avaliacao: i.avaliacao,
+                comentario: i.comentario
             })
         }
 
         let sites_arr = []
         let avaliacao_arr = []
+        let comentario_arr = []
 
         for (const i of sitesMap) {
             const {
                 site,
-                avaliacao
+                avaliacao,
+                comentario
             } = i
 
             sites_arr.push(site)
             avaliacao_arr.push(avaliacao)
+            comentario_arr.push(comentario)
         }
 
         if (sites_arr.indexOf(link) != -1) {
@@ -215,7 +230,8 @@ function inconfiavel() {
             for (const i of sitesMap) {
                 let {
                     site,
-                    avaliacao
+                    avaliacao,
+                    comentario
                 } = i
 
                 if (site == link) {
@@ -224,9 +240,12 @@ function inconfiavel() {
 
                 sitesMap1.push({
                     site: site,
-                    avaliacao: avaliacao
+                    avaliacao: avaliacao,
+                    comentario: comentario
                 })
             }
+            console.log(JSON.stringify(sitesMap))
+            console.log(JSON.stringify(sitesMap1))
             localStorage.setItem('sites', JSON.stringify(sitesMap1))
 
             window.location.href = "./encontrada.html?link=" + link;

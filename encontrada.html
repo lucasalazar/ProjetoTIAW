@@ -60,6 +60,7 @@
                     <p>O site de link: <b id="link-a">LINK</b> foi encontrado no nossa banco de dados e sua avaliação é
                         de
                         <b id="avaliacao">AVALIACAO</b>. Com a pontuação de: <b id="count-avaliacao">Count</b></p>
+                    <p>Descrição sobre o site: <b id="coment">Coment</b></p>
                     <p>Vote você também nesse site:</p>
                     <button type="button" class="btn btn-success btn-sm" onclick="confiavel()">Confiável</button>
                     <button type="button" class="btn btn-danger btn-sm" onclick="inconfiavel()">Não confiável</button>
@@ -93,22 +94,26 @@
                 for (const i of a) {
                     sitesMap.push({
                         site: i.site,
-                        avaliacao: i.avaliacao
+                        avaliacao: i.avaliacao,
+                        comentario: i.comentario
                     })
                 }
 
                 let sites_arr = []
                 let avaliacao_arr = []
+                let comentario_arr = []
 
                 for (const i of sitesMap) {
-                    const {site, avaliacao} = i
+                    const {site, avaliacao, comentario} = i
 
                     sites_arr.push(site)
                     avaliacao_arr.push(avaliacao)
+                    comentario_arr.push(comentario)
                 }
 
                 if (sites_arr.indexOf(link) != -1) {
                    let avaliacao = parseInt(avaliacao_arr[sites_arr.indexOf(link)])
+                   let coment = comentario_arr[sites_arr.indexOf(link)]
 
                    if (avaliacao >= 0) {
                        avaliacao = 'CONFIÁVEL'
@@ -117,9 +122,11 @@
                    }
                    let site_k = document.getElementById('link-a')
                    let avaliacao_k = document.getElementById('avaliacao')
+                   let descricao_k = document.getElementById('coment')
                    let count_k = document.getElementById('count-avaliacao')
                    site_k.innerHTML = link
                    avaliacao_k.innerHTML = avaliacao
+                   descricao_k.innerHTML = coment
                    count_k.innerHTML = parseInt(avaliacao_arr[sites_arr.indexOf(link)])
                 } else {
                     window.location.href = "./registrar.html";
